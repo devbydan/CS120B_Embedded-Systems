@@ -11,7 +11,7 @@ This course will use an online interactive textbook, “Programming Embedded Sys
 ## Required Items:
 Online Interactive Textbook: “Programming Embedded Systems” (PES) by Zyante Learning. CS 120B covers Ch. 1-7. 
 
-Sign up at zyBooks.com
+Sign up at zyBooks.com\
 Click 'Subscribe'.
 
 It is worth noting that Zyante Learning is a UCR startup company, co-founded by Prof. Frank Vahid (who built and regularly teaches CS 120B). If you are interested in the underlying philosophy of Zyante’s approach, or if you want to learn more about future updates, the company’s mission, etc., you can visit blog.zybooks.com.
@@ -52,9 +52,9 @@ Laboratory Exercises (515)\
   50	Laboratory Exercise 11\
  200 	Custom Laboratory Project
 
-The class will not be graded on a curve.\
+The class will not be graded on a curve.
 
-Please refer to the ‘Grading Overview’ and ‘Laboratory Policies’ documents (posed on iLearn under ‘Syllabus’) for further details.\
+Please refer to the ‘Grading Overview’ and ‘Laboratory Policies’ documents (posed on iLearn under ‘Syllabus’) for further details.
 
 General Course Features and Policies:
 
