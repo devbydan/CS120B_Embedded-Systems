@@ -33,14 +33,14 @@
  * File       -> dmurp006_Lab10_Part5.c
  */
 
- // Necessary headers for Atmel Studio 7.0
+// Necessary headers for Atmel Studio 7.0
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
 volatile unsigned char TimerFlag = 0; // TimerISR() sets this to 1. C programmer should clear to 0.
 
 // Internal variables for mapping AVR's ISR to our cleaner TimerISR model.
-unsigned long _avr_timer_M = 1; // Start count from here, down to 0. Default 1 ms.
+unsigned long _avr_timer_M = 1;       // Start count from here, down to 0. Default 1 ms.
 unsigned long _avr_timer_cntcurr = 0; // Current internal count of 1ms SM_SM_Tick_First_Cycles
 
 /*
@@ -69,13 +69,13 @@ unsigned long _avr_timer_cntcurr = 0; // Current internal count of 1ms SM_SM_Tic
   *  ******************* Function Breakdown ********************
   * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   * void TimerSet(unsigned char M) -- set the timer to SM_SM_Tick_First_Cycle
-  *									 every M milliseconds
-  * void TimerOn() -- inititialize and start the timer
+  *			              every M milliseconds
+  * void TimerOn()  -- inititialize and start the timer
   * void TimerOff() -- stop the timer
   * void TimerISR() -- called automatically when the timer SM_SM_Tick_First_Cycles,
-  *					  with contents filled by the user ONLY with
-  *					  an instruction that sets the user-declared
-  *					  global variable TimerFlag=1
+  *		       with contents filled by the user ONLY with
+  * 	               an instruction that sets the user-declared
+  *	               global variable TimerFlag=1
   * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   */
 
@@ -85,7 +85,7 @@ void TimerOn()
 	TCCR1B = 0x0B;  // bit3 = 0: CTC mode (clear timer on compare)
 	OCR1A = 125;	// Timer interrupt will be generated when TCNT1==OCR1A
 	TIMSK1 = 0x02;  // bit1: OCIE1A -- enables compare match interrupt
-	TCNT1 = 0;		//Initialize avr counter
+	TCNT1 = 0;	//Initialize avr counter
 
 	_avr_timer_cntcurr = _avr_timer_M; // TimerISR will be called every _avr_timer_cntcurr milliseconds
 
@@ -177,7 +177,7 @@ void SM_Tick_First_Cycle()
 
 		     if ((~PINA & 0x01)) { PORTC = ++temp_3LED; }
 
-		else if ((~PINA & 0x02)) { PORTC = temp_3LED--; }
+		else if ((~PINA & 0x02)) { PORTC = --temp_3LED; }
 
 	}
 			
@@ -194,9 +194,9 @@ void SM_Tick_Second_Cycle()
 	{
 		PORTC = temp_3LED;// Update PORTC
 
-		     if ((~PINA & 0x01)) { PORTC = temp_3LED++; }
+		     if ((~PINA & 0x01)) { PORTC = ++temp_3LED; }
 
-		else if ((~PINA & 0x02)) { PORTC = temp_3LED--; }
+		else if ((~PINA & 0x02)) { PORTC = --temp_3LED; }
 	}
 	
 	while(!TimerFlag){ /* Wait for 1 sec */ }
